@@ -1,0 +1,153 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.0.0" author="X">
+        <createTable tableName="users">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="password" type="VARCHAR(300)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+        <rollback>
+            <dropTable tableName="users"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="1.0.6" author="X">
+        <createTable tableName="images">
+
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="directory" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_user" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
+
+
+        </createTable>
+        <rollback>
+            <dropTable tableName="images"/>
+        </rollback>
+    </changeSet>
+
+
+
+    <changeSet id="1.0.3" author="X">
+        <createTable tableName="album_image">
+
+            <column name="id_album" type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true" primaryKeyName="pk_user_roles"/>
+            </column>
+
+            <column name="id_image" type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true" primaryKeyName="pk_user_roles"/>/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="album_image"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="1.0.322" author="X">
+        <createTable tableName="category_image">
+
+            <column name="id_image" type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true" primaryKeyName="pk_user_rolssses"/>
+            </column>
+
+            <column name="id_category" type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true" primaryKeyName="pk_user_rolssses"/>/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="category_image"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="1.0.4" author="X">
+        <createTable tableName="albums">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_user" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+        <rollback>
+            <dropTable tableName="albums"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="1.0.4xs" author="X">
+        <createTable tableName="categories">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="title" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+        <rollback>
+            <dropTable tableName="categories"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="1.0.9" author="X">
+        <addForeignKeyConstraint baseColumnNames="id_user"
+                                 baseTableName="albums"
+                                 constraintName="asdasdasds"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+
+<!--        <addForeignKeyConstraint baseColumnNames="id_image"-->
+<!--                                 baseTableName="categories"-->
+<!--                                 constraintName="asdasdasdsfsffgsgsf"-->
+<!--                                 referencedColumnNames="id"-->
+<!--                                 referencedTableName="images"/>-->
+    </changeSet>
+
+    <changeSet id="1.0.11" author="X">
+        <insert tableName="categories">
+            <column name="title" value="RELAX"/>
+        </insert>
+
+        <insert tableName="categories">
+            <column name="title" value="FAMILY"/>
+        </insert>
+        <insert tableName="categories">
+            <column name="title" value="FRIENDS"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
